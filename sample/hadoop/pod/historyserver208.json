@@ -1,0 +1,42 @@
+{
+    "id": "historyserver208",
+    "hostname": "historyserver208",
+    "resource": {
+       "vcpu": 2,
+       "memory": 2048
+    },
+    "containers" : [{
+        "image": "2breakfast/hadoop:2.7.3-yarn",
+        "envs": [{
+            "env": "PUBLISHED_IP",
+            "value": "192.168.1.208"
+        }, {
+            "env": "RM_HOST",
+            "value": "192.168.1.204"
+        }, {
+            "env": "JH_HOST",
+            "value": "192.168.1.208"
+        }, {
+            "env": "HDFS_NAMENODE_RPC_HOST",
+            "value": "192.168.1.200"
+        }, {
+            "env": "ROLE",
+            "value": "historyserver"
+        }],
+        "volumes": [{
+            "volume": "data_vol",
+            "path": "/tmp/hadoop",
+            "readOnly": false
+        }]
+    }],
+    "volumes": [{
+        "name": "data_vol",
+        "source": "/hadoop/historyserver208",
+        "driver": "vfs"
+    }],
+    "interfaces": [{
+        "bridge": "hyper0",
+        "ip": "192.168.1.208/24",
+        "gateway": "192.168.1.20"
+    }]
+}

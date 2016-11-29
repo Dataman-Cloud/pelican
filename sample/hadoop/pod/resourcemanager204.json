@@ -1,0 +1,39 @@
+{
+    "id": "resourcemanager204",
+    "hostname": "resourcemanager204",
+    "resource": {
+       "vcpu": 2,
+       "memory": 2048
+    },
+    "containers" : [{
+        "image": "2breakfast/hadoop:2.7.3-yarn",
+        "envs": [{
+            "env": "PUBLISHED_IP",
+            "value": "192.168.1.204"
+        }, {
+            "env": "RM_HOST",
+            "value": "192.168.1.204"
+        }, {
+            "env": "HDFS_NAMENODE_RPC_HOST",
+            "value": "192.168.1.200"
+        }, {
+            "env": "ROLE",
+            "value": "resourcemanager"
+        }],
+        "volumes": [{
+            "volume": "data_vol",
+            "path": "/tmp/hadoop",
+            "readOnly": false
+        }]
+    }],
+    "volumes": [{
+        "name": "data_vol",
+        "source": "/hadoop/rm204",
+        "driver": "vfs"
+    }],
+    "interfaces": [{
+        "bridge": "hyper0",
+        "ip": "192.168.1.204/24",
+        "gateway": "192.168.1.20"
+    }]
+}

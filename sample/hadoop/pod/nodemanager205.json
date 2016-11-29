@@ -1,0 +1,39 @@
+{
+    "id": "nodemanager205",
+    "hostname": "nodemanager205",
+    "resource": {
+       "vcpu": 2,
+       "memory": 2048
+    },
+    "containers" : [{
+        "image": "2breakfast/hadoop:2.7.3-yarn",
+        "envs": [{
+            "env": "PUBLISHED_IP",
+            "value": "192.168.1.205"
+        }, {
+            "env": "RM_HOST",
+            "value": "192.168.1.204"
+        }, {
+            "env": "HDFS_NAMENODE_RPC_HOST",
+            "value": "192.168.1.200"
+        }, {
+            "env": "ROLE",
+            "value": "nodemanager"
+        }],
+        "volumes": [{
+            "volume": "data_vol",
+            "path": "/tmp/hadoop",
+            "readOnly": false
+        }]
+    }],
+    "volumes": [{
+        "name": "data_vol",
+        "source": "/hadoop/nm205",
+        "driver": "vfs"
+    }],
+    "interfaces": [{
+        "bridge": "hyper0",
+        "ip": "192.168.1.205/24",
+        "gateway": "192.168.1.20"
+    }]
+}

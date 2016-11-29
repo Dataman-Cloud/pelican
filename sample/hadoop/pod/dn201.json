@@ -1,0 +1,33 @@
+{
+    "id": "datanode201",
+    "hostname": "datanode201",
+    "resource": {
+       "vcpu": 2,
+       "memory": 2048
+    },
+    "containers" : [{
+        "image": "2breakfast/hadoop:2.7.3-dn",
+        "envs": [{
+            "env": "PUBLISHED_IP",
+            "value": "192.168.1.201"
+        }, {
+            "env": "HDFS_NAMENODE_RPC_HOST",
+            "value": "192.168.1.200"
+        }],
+        "volumes": [{
+            "volume": "data_vol",
+            "path": "/var/hdfs/datanode",
+            "readOnly": false
+        }]
+    }],
+    "volumes": [{
+        "name": "data_vol",
+        "source": "/hadoop/dn",
+        "driver": "vfs"
+    }],
+    "interfaces": [{
+        "bridge": "hyper0",
+        "ip": "192.168.1.201/24",
+        "gateway": "192.168.1.20"
+    }]
+}

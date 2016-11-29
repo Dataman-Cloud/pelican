@@ -1,0 +1,33 @@
+{
+    "id": "namenode200",
+    "hostname": "namenode200",
+    "resource": {
+       "vcpu": 2,
+       "memory": 2048
+    },
+    "containers" : [{
+        "image": "2breakfast/hadoop:2.7.3-nn",
+        "envs": [{
+            "env": "PUBLISHED_IP",
+            "value": "192.168.1.200"
+        }, {
+            "env": "CLUSTER_NAME",
+            "value": "dataman_hadoop"
+        }],
+        "volumes": [{
+            "volume": "data_vol",
+            "path": "/var/hdfs/namenode",
+            "readOnly": false
+        }]
+    }],
+    "volumes": [{
+        "name": "data_vol",
+        "source": "/hadoop/nn",
+        "driver": "vfs"
+    }],
+    "interfaces": [{
+        "bridge": "hyper0",
+        "ip": "192.168.1.200/24",
+        "gateway": "192.168.1.20"
+    }]
+}
