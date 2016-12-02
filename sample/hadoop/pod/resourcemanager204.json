@@ -1,6 +1,6 @@
 {
     "id": "resourcemanager204",
-    "hostname": "resourcemanager204",
+    "hostname": "192.168.1.204",
     "resource": {
        "vcpu": 2,
        "memory": 2048
@@ -13,6 +13,9 @@
         }, {
             "env": "RM_HOST",
             "value": "192.168.1.204"
+        }, {
+            "env": "JH_HOST",
+            "value": "192.168.1.208"
         }, {
             "env": "HDFS_NAMENODE_RPC_HOST",
             "value": "192.168.1.200"
