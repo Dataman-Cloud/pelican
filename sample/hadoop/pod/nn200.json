@@ -1,12 +1,12 @@
 {
     "id": "namenode200",
-    "hostname": "namenode200",
+    "hostname": "192.168.1.200",
     "resource": {
-       "vcpu": 2,
-       "memory": 2048
+       "vcpu": 4,
+       "memory": 8192
     },
     "containers" : [{
-        "image": "2breakfast/hadoop:2.7.3-nn",
+        "image": "2breakfast/hadoop:centos7-2.7.3-nn",
         "envs": [{
             "env": "PUBLISHED_IP",
             "value": "192.168.1.200"
@@ -22,7 +22,7 @@
     }],
     "volumes": [{
         "name": "data_vol",
-        "source": "/hadoop/nn",
+        "source": "/hadoop/nn200",
         "driver": "vfs"
     }],
     "interfaces": [{

@@ -1,0 +1,48 @@
+{
+    "id": "nodemanager212",
+    "hostname": "192.168.1.212",
+    "resource": {
+       "vcpu": 8,
+       "memory": 16384
+    },
+    "containers" : [{
+        "image": "2breakfast/hadoop:centos7-2.7.3-yarn",
+        "envs": [{
+            "env": "PUBLISHED_IP",
+            "value": "192.168.1.212"
+        }, {
+            "env": "RM_HOST",
+            "value": "192.168.1.210"
+        }, {
+            "env": "JH_HOST",
+            "value": "192.168.1.217"
+        }, {
+            "env": "RESOURCE_CPU_VCORE",
+            "value": "8"
+        }, {
+            "env": "RESOURCE_MEM_MB",
+            "value": "16384"
+        }, {
+            "env": "HDFS_NAMENODE_RPC_HOST",
+            "value": "192.168.1.200"
+        }, {
+            "env": "ROLE",
+            "value": "nodemanager"
+        }],
+        "volumes": [{
+            "volume": "data_vol",
+            "path": "/tmp/hadoop",
+            "readOnly": false
+        }]
+    }],
+    "volumes": [{
+        "name": "data_vol",
+        "source": "/hadoop/nm212",
+        "driver": "vfs"
+    }],
+    "interfaces": [{
+        "bridge": "hyper0",
+        "ip": "192.168.1.212/24",
+        "gateway": "192.168.1.22"
+    }]
+}

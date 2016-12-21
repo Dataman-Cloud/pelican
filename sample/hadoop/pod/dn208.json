@@ -1,42 +1,33 @@
 {
-    "id": "historyserver208",
-    "hostname": "historyserver208",
+    "id": "datanode208",
+    "hostname": "datanode208",
     "resource": {
-       "vcpu": 2,
-       "memory": 2048
+       "vcpu": 4,
+       "memory": 8196
     },
     "containers" : [{
-        "image": "2breakfast/hadoop:2.7.3-yarn",
+        "image": "2breakfast/hadoop:centos7-2.7.3-dn",
         "envs": [{
             "env": "PUBLISHED_IP",
             "value": "192.168.1.208"
         }, {
-            "env": "RM_HOST",
-            "value": "192.168.1.204"
-        }, {
-            "env": "JH_HOST",
-            "value": "192.168.1.208"
-        }, {
             "env": "HDFS_NAMENODE_RPC_HOST",
             "value": "192.168.1.200"
-        }, {
-            "env": "ROLE",
-            "value": "historyserver"
         }],
         "volumes": [{
             "volume": "data_vol",
-            "path": "/tmp/hadoop",
+            "path": "/var/hdfs/datanode",
             "readOnly": false
         }]
     }],
     "volumes": [{
         "name": "data_vol",
-        "source": "/hadoop/historyserver208",
+        "source": "/hadoop/dn208",
         "driver": "vfs"
     }],
     "interfaces": [{
         "bridge": "hyper0",
         "ip": "192.168.1.208/24",
-        "gateway": "192.168.1.20"
+        "gateway": "192.168.1.22"
     }]
 }

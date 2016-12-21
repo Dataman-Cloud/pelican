@@ -1,21 +1,21 @@
 {
-    "id": "resourcemanager204",
-    "hostname": "192.168.1.204",
+    "id": "resourcemanager210",
+    "hostname": "192.168.1.210",
     "resource": {
-       "vcpu": 2,
-       "memory": 2048
+       "vcpu": 8,
+       "memory": 16384
     },
     "containers" : [{
-        "image": "2breakfast/hadoop:2.7.3-yarn",
+        "image": "2breakfast/hadoop:centos7-2.7.3-yarn",
         "envs": [{
             "env": "PUBLISHED_IP",
-            "value": "192.168.1.204"
+            "value": "192.168.1.210"
         }, {
             "env": "RM_HOST",
-            "value": "192.168.1.204"
+            "value": "192.168.1.210"
         }, {
             "env": "JH_HOST",
-            "value": "192.168.1.208"
+            "value": "192.168.1.217"
         }, {
             "env": "HDFS_NAMENODE_RPC_HOST",
             "value": "192.168.1.200"
@@ -31,12 +31,12 @@
     }],
     "volumes": [{
         "name": "data_vol",
-        "source": "/hadoop/rm204",
+        "source": "/hadoop/rm210",
         "driver": "vfs"
     }],
     "interfaces": [{
         "bridge": "hyper0",
-        "ip": "192.168.1.204/24",
+        "ip": "192.168.1.210/24",
         "gateway": "192.168.1.20"
     }]
 }
