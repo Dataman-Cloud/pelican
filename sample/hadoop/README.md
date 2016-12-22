@@ -6,9 +6,28 @@ hadoop on Runv
 
 #### 1. 开启 Intel VT 或者 AMD-V virtualization hardware extensions in BIOS
 
-Intel VT 可能会被 BIOS disable 掉了，执行命令 `cat /proc/cpuinfo | grep vmx svm` ，如果没有输出则表明，VT 被disable掉了，需求重启机器进入BIOS enable VT。
+>Intel VT 可能会被 BIOS disable 掉了，执行命令 `cat /proc/cpuinfo | grep vmx svm` ，如果没有输出则表明，VT 被disable掉了，需求重启机器进入BIOS enable VT。
 
-具体设置方式请参考：https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/sect-Virtualization-Troubleshooting-Enabling_Intel_VT_and_AMD_V_virtualization_hardware_extensions_in_BIOS.html
+>具体设置方式请参考：https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/sect-Virtualization-Troubleshooting-Enabling_Intel_VT_and_AMD_V_virtualization_hardware_extensions_in_BIOS.html
+
+#### 2. 安装 KVM 虚拟化组件
+
+>通过如下命令安装 kvm 组件
+
+>```bash
+yum install -y qemu-kvm qemu-img virt-manager libvirt-python libvirt-client virt-viewer libvirt virt-install bridge-utils
+systemctl start libvirtd
+systemctl enable libvirtd
+```
+
+>执行下面命令 `lsmod | grep kvm` 如果输出
+
+>```
+kvm_intel             162153  0
+kvm                   525409  1 kvm_intel
+```
+
+则表明安装成功。
 
 ### perf
 
