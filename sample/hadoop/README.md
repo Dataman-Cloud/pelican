@@ -64,7 +64,7 @@ GATEWAY=192.168.1.1
 ONBOOT=yes
 ```
 
-#### 5. `service network restart`
+#### 5. 执行 `service network restart`
 
 #### 6. 配置 hyper
 > 编辑文件 `vim /etc/hyper/config` , 将其中的相关值设置成如下：
