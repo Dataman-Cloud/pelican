@@ -8,8 +8,8 @@ The cluster statistics:
 * 5 bare metals
 * KVM
 * Linux Bridge
-* hdfs on Runv: 4 VCores, 8G * (1 namenode + 3 datanode)
-* yarn on Runv: 8VCores, 16G * (1 resource manager + 4 node manager)
+* hdfs on Runv: 4 VCores, 8G * (1 namenode + 3 datanode)/physical machine
+* yarn on Runv: 8VCores, 16G * (1 resource manager + 4 node manager) / physical machine
 
 #### in house benchmark:
 
