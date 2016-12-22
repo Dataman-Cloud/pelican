@@ -2,6 +2,7 @@ hadoop on Runv
 ==============
 
 ### 部署
+
 假设我们有5台物理机，并且这些物理机**在同一个子网**。
 
 #### 1. 开启 Intel VT 或者 AMD-V virtualization hardware extensions in BIOS
@@ -110,8 +111,33 @@ BridgeIP=192.168.1.20/24
 
 另外，我们使用的docker镜像的dockerfile 都在 https://github.com/vitan/hadoop/tree/master/centos/7/hadoop
 
+## Terasort 测试
 
-## perf
+### 执行
+
+#### 1. 进入 resourcemanager 实例
+
+>```
+hyperctl exec -t $resourcemanager_pod_id bash
+
+cd /opt/hadoop
+```
+
+#### 2. 生成 100G 数据
+
+>```
+time ./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar teragen 1000000000 /user/hduser/terasort-input
+```
+
+#### 3. 执行排序
+
+>```
+ time ./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar terasort /user/hduser/terasort-input /user/hduser/terasort-output
+```
+
+注意：如果资源少，这个排序可能花费数十小时，你可以酌情减少数据量
+
+### perf
 
 The cluster statistics:
 
