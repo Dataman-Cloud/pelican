@@ -91,7 +91,26 @@ BridgeIP=192.168.1.20/24
 
 > 使用命令 `hyperctl run -p pod/nn200.json` 启动VM实例。
 
+#### 9. 部署 hdfs data node，与上述第8步类似， 我们需要编辑 [dn207.json](./pod/dn207.json) 来依次启动多个 data node。
+
+#### 10. 部署 yarn resource manager， 假设我们在 192.168.1.20 机器上部署 resource manager，我们可以直接使用pod文件 [resourcemanager210.json](./pod/resourcemanager210.json)
+
+>这个pod文件表明会启动一个
+
+>* 8vcpu，16384M 内存
+>* 固定IP为192.168.1.210
+>* 并挂载物理机目录 /hadoop/rm210 到 /tmp/hadoop
+>* 使用gateway 192.168.1.20
+
+> 的 VM.
+
+> 使用命令 `hyperctl run -p pod/resourcemanager210.json` 启动VM实例。
+
+#### 11. 部署 yarn node manager，与上述第10步类似， 我们需要编辑 [nodemanager211.json](./pod/nodemanager211.json) 来依次启动多个 node manager。
+
 另外，我们使用的docker镜像的dockerfile 都在 https://github.com/vitan/hadoop/tree/master/centos/7/hadoop
+
+
 ## perf
 
 The cluster statistics:
