@@ -27,9 +27,9 @@ kvm_intel             162153  0
 kvm                   525409  1 kvm_intel
 ```
 
-则表明安装成功。
+>则表明安装成功。
 
-> 参考链接： http://www.linuxtechi.com/install-kvm-hypervisor-on-centos-7-and-rhel-7/
+>参考链接： http://www.linuxtechi.com/install-kvm-hypervisor-on-centos-7-and-rhel-7/
 
 ### perf
 
