@@ -76,6 +76,21 @@ BridgeIP=192.168.1.20/24
 
 > 然后重启 hyperd ， `service hyperd restart`
 
+#### 7. 在其他几台物理机上依次执行上述 1-6 步，注意要把IP地址换成相应的IP。
+
+#### 8. 部署hdfs name node， 假设我们在 192.168.1.20 机器上部署 namenode，则我们可以直接用pod文件 [nn200.json](./pod/nn200.json)
+
+>这个pod文件表明会启动一个
+
+>* 4vcpu，8192M内存
+>* 固定IP为192.168.1.200
+>* 并挂载物理机目录 /hadoop/nn200 到 /var/hdfs/namenode
+>* 使用gateway 192.168.1.20
+
+> 的 VM.
+
+> 使用命令 `hyperctl run -p pod/nn200.json` 启动VM实例。
+
 ## perf
 
 The cluster statistics:
