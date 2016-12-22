@@ -91,6 +91,7 @@ BridgeIP=192.168.1.20/24
 
 > 使用命令 `hyperctl run -p pod/nn200.json` 启动VM实例。
 
+另外，我们使用的docker镜像的dockerfile 都在 https://github.com/vitan/hadoop/tree/master/centos/7/hadoop
 ## perf
 
 The cluster statistics:
@@ -129,4 +130,5 @@ refer link:
 
 * http://www.michael-noll.com/blog/2011/04/09/benchmarking-and-stress-testing-an-hadoop-cluster-with-terasort-testdfsio-nnbench-mrbench/
 * http://hadoop.apache.org/docs/r2.7.3/api/org/apache/hadoop/examples/terasort/package-summary.html
+* https://github.com/vitan/hadoop/tree/master/centos/7/hadoop
 
