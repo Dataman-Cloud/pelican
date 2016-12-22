@@ -31,7 +31,40 @@ kvm                   525409  1 kvm_intel
 
 >参考链接： http://www.linuxtechi.com/install-kvm-hypervisor-on-centos-7-and-rhel-7/
 
-### perf
+#### 3. 安装 hyper
+
+>```bash
+curl -sSL https://hypercontainer.io/install | bash
+```
+
+>或者参考链接 https://docs.hypercontainer.io/get_started/install/linux.html
+
+#### 4. 配置 linux bridge
+>假设物理网卡为 `eth0`, 且主机IP为`192.168.1.20`，子网掩码为`255.255.255.0`, 编辑文件 `vim /etc/sysconfig/network-scripts/ifcfg-eth0`
+
+>至少将下述各值配置好：
+
+>```
+TYPE=Ethernet
+BOOTPROTO=static
+IPADDR=192.168.1.20
+ONBOOT=yes
+BRIDGE=hyper0
+```
+
+> 然后编辑文件 `vim /etc/sysconfig/network-scripts/ifcfg-hyper0` , 将下述各值配置好：
+
+>```
+DEVICE=hyper0
+TYPE=Bridge
+BOOTPROTO=static
+IPADDR=192.168.1.20
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+ONBOOT=yes
+```
+
+## perf
 
 The cluster statistics:
 
