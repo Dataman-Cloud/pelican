@@ -5,7 +5,9 @@ hadoop on Runv
 假设我们有5台物理机，并且这些物理机**在同一个子网**。
 
 #### 1. 开启 Intel VT 或者 AMD-V virtualization hardware extensions in BIOS
+
 Intel VT 可能会被 BIOS disable 掉了，执行命令 `cat /proc/cpuinfo | grep vmx svm` ，如果没有输出则表明，VT 被disable掉了，需求重启机器进入BIOS enable VT。
+
 具体设置方式请参考：https://docs.fedoraproject.org/en-US/Fedora/13/html/Virtualization_Guide/sect-Virtualization-Troubleshooting-Enabling_Intel_VT_and_AMD_V_virtualization_hardware_extensions_in_BIOS.html
 
 ### perf
