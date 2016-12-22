@@ -64,6 +64,18 @@ GATEWAY=192.168.1.1
 ONBOOT=yes
 ```
 
+#### 5. `service network restart`
+
+#### 6. 配置 hyper
+> 编辑文件 `vim /etc/hyper/config` , 将其中的相关值设置成如下：
+
+>```
+Hypervisor=kvm
+BridgeIP=192.168.1.20/24
+```
+
+> 然后重启 hyperd ， `service hyperd restart`
+
 ## perf
 
 The cluster statistics:
