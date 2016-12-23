@@ -119,7 +119,9 @@ BridgeIP=192.168.1.20/24
 
 >```
 hyperctl exec -t $resourcemanager_pod_id bash
+```
 
+>```
 cd /opt/hadoop
 ```
 
