@@ -10,14 +10,22 @@
         "entryPoint": ["/opt/ambari-server/non-init-entrypoint.sh"],
         "command": ["/bin/bash"],
         "volumes": [{
-            "volume": "data_vol",
-            "path": "/lib/modules",
+            "volume": "data_vol1",
+            "path": "/var/log/ambari-server/",
+            "readOnly": false
+        }, {
+            "volume": "data_vol2",
+            "path": "/var/lib/pgsql/",
             "readOnly": false
         }]
     }],
     "volumes": [{
-        "name": "data_vol",
-        "source": "/ambari/ambari110",
+        "name": "data_vol1",
+        "source": "/ambari/ambari110/log",
+        "driver": "vfs"
+    }, {
+        "name": "data_vol2",
+        "source": "/ambari/ambari110/pgsql",
         "driver": "vfs"
     }],
     "interfaces": [{
