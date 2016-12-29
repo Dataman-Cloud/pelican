@@ -130,78 +130,10 @@ BridgeIP=192.168.1.20/24
 
 >这个pod文件表明会启动一个
 
->* 8vcpu，16384M 内存
->* 固定IP为192.168.1.210
->* 并挂载物理机目录 /hadoop/rm210 到 /tmp/hadoop
+>* 4vcpu，6096M 内存
+>* 固定IP为192.168.1.112
+>* 并挂载物理机目录 /ambari/ambari112 到 /lib/modules
 >* 使用gateway 192.168.1.20
 
 > 的 VM.
-
-## Terasort 测试
-
-### 执行
-
-#### 1. 进入 resourcemanager 实例
-
->```
-hyperctl exec -t $resourcemanager_pod_id bash
-```
-
->```
-cd /opt/hadoop
-```
-
-#### 2. 生成 100G 数据
-
->```
-time ./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar teragen 1000000000 /user/hduser/terasort-input
-```
-
-#### 3. 执行排序
-
->```
- time ./bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.3.jar terasort /user/hduser/terasort-input /user/hduser/terasort-output
-```
-
-注意：如果资源少，这个排序可能花费数十小时，你可以酌情减少数据量
-
-### perf
-
-The cluster statistics:
-
-* 5 bare metals
-* KVM
-* Linux Bridge
-* hdfs on Runv: 4 VCores, 8G * (1 namenode + 3 datanode)/physical machine
-* yarn on Runv: 8VCores, 16G * (1 resource manager + 4 node manager) / physical machine
-
-#### in house benchmark:
-
-Terasort in 100G data costed:
-
-```
-real    601m25.369s
-user    0m56.305s
-sys     0m21.853s
-```
-
-#### Yahoo benchmark:
-
-In May 2008, Owen O'Malley ran this code on a 910 node cluster and sorted the 10 billion records (1 TB) in 209 seconds (3.48 minutes) to win the annual general purpose (daytona) terabyte sort benchmark.
-
-* 910 nodes
-* 4 dual core Xeons @ 2.0ghz per a node
-* 4 SATA disks per a node
-* 8G RAM per a node
-* 1 gigabit ethernet on each node
-* 40 nodes per a rack
-* 8 gigabit ethernet uplinks from each rack to the core
-* Red Hat Enterprise Linux Server Release 5.1 (kernel 2.6.18)
-* Sun Java JDK 1.6.0_05-b13
-
-refer link:
-
-* http://www.michael-noll.com/blog/2011/04/09/benchmarking-and-stress-testing-an-hadoop-cluster-with-terasort-testdfsio-nnbench-mrbench/
-* http://hadoop.apache.org/docs/r2.7.3/api/org/apache/hadoop/examples/terasort/package-summary.html
-* https://github.com/vitan/hadoop/tree/master/centos/7/hadoop
 
