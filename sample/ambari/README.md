@@ -158,3 +158,7 @@ BridgeIP=192.168.1.20/24
 
 >* Target Hosts 里面，逐行输入 ambari-agent 主机的 ip 或 主机名
 >* Host Registration Information 勾选： *Perform manual registration on hosts and do not use SSH*
+
+#### 5. 在 **Choose Services** 步
+
+>勾选想要安装的应用，譬如：zookeeper, hdfs, yarn, spark 等，另外，一定要勾选 **Ambari Metrics** 这是ambari的监控
