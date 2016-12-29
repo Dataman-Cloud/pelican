@@ -137,3 +137,15 @@ BridgeIP=192.168.1.20/24
 
 > 的 VM.
 
+### 进入 ambari server 设置
+
+#### 1. 浏览器访问 192.168.1.110:8080
+
+>* 用户名： admin
+>* 密码: admin
+
+#### 2. Launch Install Wizard -> 创建集群（create cluster）
+
+#### 3. 在 **Select Stack** 步
+
+>选择
