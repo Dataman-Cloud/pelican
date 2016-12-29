@@ -162,3 +162,6 @@ BridgeIP=192.168.1.20/24
 #### 5. 在 **Choose Services** 步
 
 >勾选想要安装的应用，譬如：zookeeper, hdfs, yarn, spark 等，另外，一定要勾选 **Ambari Metrics** 这是ambari的监控
+
+
+DONE完成
