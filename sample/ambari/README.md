@@ -148,4 +148,13 @@ BridgeIP=192.168.1.20/24
 
 #### 3. 在 **Select Stack** 步
 
->选择
+>选择 **HDP 2.3**
+>在 **Advanced Repository Options** 里面，将**redhat7** 里面的
+
+>* HDP-2.3 替换成 http://192.168.1.21/hdp/HDP/centos7/2.x/updates/2.3.2.0/
+>* HDP-UTILS-1.1.0.20 替换成 http://192.168.1.21/hdp/HDP-UTILS-1.1.0.20/repos/centos7/
+
+#### 4. 在 **Install Options** 步
+
+>* Target Hosts 里面，逐行输入 ambari-agent 主机的 ip 或 主机名
+>* Host Registration Information 勾选： *Perform manual registration on hosts and do not use SSH*
