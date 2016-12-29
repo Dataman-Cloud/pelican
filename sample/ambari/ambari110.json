@@ -1,0 +1,28 @@
+{
+    "id": "ambari110",
+    "hostname": "192.168.1.110",
+    "resource": {
+       "vcpu": 4,
+       "memory": 6096
+    },
+    "containers" : [{
+        "image": "2breakfast/ambari:server",
+        "entryPoint": ["/opt/ambari-server/non-init-entrypoint.sh"],
+        "command": ["/bin/bash"],
+        "volumes": [{
+            "volume": "data_vol",
+            "path": "/lib/modules",
+            "readOnly": false
+        }]
+    }],
+    "volumes": [{
+        "name": "data_vol",
+        "source": "/ambari/ambari110",
+        "driver": "vfs"
+    }],
+    "interfaces": [{
+        "bridge": "hyper0",
+        "ip": "192.168.1.110/24",
+        "gateway": "192.168.1.20"
+    }]
+}
